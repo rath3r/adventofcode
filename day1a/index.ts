@@ -20,3 +20,5 @@ values.forEach((el, i, arr) => {
 console.log('----');
 console.log(countPlus);
 console.log(values.length);
+
+
