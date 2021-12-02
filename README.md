@@ -4,8 +4,14 @@ An attempt to solidify my Typescript knowledge by using it to complete the [Adve
 
 ## Day 1
 
-### Learning
+### Learnings
 
-* What is the correct way to handle asynch calls?
-* I need to use types more i.e translate the input data into an object that I can apply types to?
-* How can I add unit tests?
+- What is the correct way to handle asynch calls?
+- I need to use types more i.e translate the input data into an object that I can apply types to?
+- How can I add unit tests?
+
+## Day 2
+
+### Learnings
+
+- How to you dynamically create a typed object?
