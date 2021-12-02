@@ -7,4 +7,5 @@ An attempt to solidify my Typescript knowledge by using it to complete the [Adve
 ### Learning
 
 * What is the correct way to handle asynch calls?
-* I need to use types more i.e translate the input data into an object that I can apply types to
+* I need to use types more i.e translate the input data into an object that I can apply types to?
+* How can I add unit tests?
