@@ -2,6 +2,10 @@
 
 An attempt to solidify my Typescript knowledge by using it to complete the [Advent of Code 2021](https://adventofcode.com/2021) by using it.
 
+## Usage
+
+`ts-node index.ts`
+
 ## Day 1
 
 ### Learnings
@@ -15,3 +19,4 @@ An attempt to solidify my Typescript knowledge by using it to complete the [Adve
 ### Learnings
 
 - How to you dynamically create a typed object?
+  -- Use the `as` type assertion

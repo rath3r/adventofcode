@@ -16,7 +16,7 @@ function getInput(data: string): Command[] {
         retArr.push({
             direction: commandStr[0],
             value: +commandStr[1]
-        });
+        } as Command);
     });
 
     return retArr;
