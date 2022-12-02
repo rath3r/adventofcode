@@ -10,4 +10,4 @@
 https://pragmaticpineapple.com/ultimate-vim-typescript-setup/
 
 
-tsc-watch --onSuccess "node ./dist/index.js"
+tsc-watch --onSuccess "node ./dist/day2/index.js"
