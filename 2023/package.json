@@ -1,0 +1,26 @@
+{
+  "name": "advent-of-code-2023",
+  "version": "1.0.0",
+  "description": "How many days can I get through this year?",
+  "main": "index.ts",
+  "scripts": {
+    "test": "tsc && jest",
+    "compile-ts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rath3r/adventofcode.git"
+  },
+  "author": "Thomas Meehan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rath3r/adventofcode/issues"
+  },
+  "homepage": "https://github.com/rath3r/adventofcode#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.10",
+    "jest": "^29.7.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  }
+}
