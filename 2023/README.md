@@ -8,4 +8,8 @@ Use `vim` and `ts` and write tests using `jest`.
 
 ## Info
 
+I'm running this using `ts-node` like so:
 
+```
+ npx ts-node src/day1/index.ts
+```
