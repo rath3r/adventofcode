@@ -29,7 +29,7 @@ export const checkForSpecialCharacters = (element:string): Array<string|number> 
 
 export const getAdjacentNumbers = (lines: Array<string>): Array<number> => {
     for(let i of lines){
-        const splitElement = splitLine(lines[i]);
+        //const splitElement = splitLine(lines[i]);
         const index = Number(i);
         const len = lines.length;
         const previous = lines[(index+len-1)%len];
