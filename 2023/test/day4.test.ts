@@ -2,7 +2,8 @@ import {
     splitLine,
     getWinningNumbers,
     calculateCardScore,
-    calculateSum
+    calculateSum,
+    calculateTotalOfCards
 } from '../src/day4/day4';
 
 const example = [
@@ -44,6 +45,10 @@ describe('day4', () => {
     });
 
     it('calculate sum of scores', () => {
-         expect(calculateSum(realExample)).toBe(13);
+         expect(calculateSum(example)).toBe(13);
+    });
+
+    it('calculate the total number of cards', () => {
+        expect(calculateTotalOfCards(example)).toBe(30);
     });
 });

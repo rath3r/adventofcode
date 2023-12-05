@@ -1,3 +1,7 @@
+import {
+    sumArrayValues
+} from '../helpers/helper';
+
 export const splitLine = (line:string): Array<string> => {
     return [line.split(':')[0], line.split(':')[1].split('|')[0].trim(), line.split(':')[1].split('|')[1].trim()];
 };
@@ -38,4 +42,25 @@ export const calculateSum = (input:Array<string>): number => {
         score += lineScore;
     }
     return score;
+};
+
+export const calculateTotalOfCards = (input:Array<string>) => {
+    const totalCards = Array();
+    for(let i in input){
+        const line = splitLine(input[i]);
+        const winningNumbers = getWinningNumbers(line);
+        if(isNaN(totalCards[i])){
+            totalCards[i] = 0;
+        }
+        totalCards[i] += 1;
+        for(let j = 0; j < totalCards[i]; j ++){
+            for(let k = 1; k <= winningNumbers.length; k++){
+                if(isNaN(totalCards[(Number(i)+k)])){
+                    totalCards[(Number(i)+k)] = 0;
+                }
+                totalCards[(Number(i)+k)] += 1;
+            }
+        }
+    }
+    return sumArrayValues(totalCards);
 };
