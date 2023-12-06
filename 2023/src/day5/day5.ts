@@ -13,14 +13,34 @@ export const getDestinationForSource = (target:number, map:Array<Array<number>>)
     return destination;
 };
 
-export const setupData = (values:Array<string>) => {
-    console.log(values);
-    const data = {
+interface seedLocationMap {
+    seeds: Array<number>,
+    maps: Array<Array<number>>
+}
+
+export const setupData = (values:Array<string>): seedLocationMap => {
+    //console.log(values);
+    const data:seedLocationMap = {
         seeds: [],
         maps: [],
     };
-    for(let i in values){
-        
+    for(let [i, value] of values.entries()){
+        if(value.indexOf("seeds:") >= 0){
+            let seedsArr = value.split(":")[1].trim().split(" ");
+            console.log(seedsArr);
+            seedsArr.map((e) => {
+                data.seeds.push(Number(e));
+            });
+        }
+        let innerMap = [];
+        let inMap = false;
+        if(value.indexOf("map:") >= 0){
+            inMap = true;
+        }
+
+            innerMap.push(values[i+1]);
     }
-    return "hello";
+
+    console.log(data);
+    return data;
 };
