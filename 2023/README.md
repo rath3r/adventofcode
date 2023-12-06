@@ -33,5 +33,5 @@ Winning scratch cards. Trying to be more code golf. I left out a test for empty 
 
 ### Day 5 - If You Give A Seed A Fertilizer
 
-Not started yet.
+Got the first star. Figured out iterators in TS. Gave up cause for the second part my loops got caught in a loop.
 

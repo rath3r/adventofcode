@@ -1,10 +1,11 @@
-export const getDestinationForSource = (target:number, map:Array<Array<number>>): number => {
+export const getDestinationForSource = (target:number, map:Array<string>): number => {
     let destination = 1;
     for(const i in map){
-        const sourceStart = map[i][1];
-        const destinationStart = map[i][0];
+        const valuesArr = map[i].split(" ");
+        const sourceStart = Number(valuesArr[1]);
+        const destinationStart = Number(valuesArr[0]);
         const diff = sourceStart - destinationStart;
-        const upper = sourceStart + (map[i][2] - 1);
+        const upper = sourceStart + (Number(valuesArr[2]) - 1);
         const lower = sourceStart;
         if(target > lower && target < upper){
             destination = target - diff;
@@ -15,7 +16,7 @@ export const getDestinationForSource = (target:number, map:Array<Array<number>>)
 
 interface seedLocationMap {
     seeds: Array<number>,
-    maps: Array<Array<number>>
+    maps: Array<Array<string>>
 }
 
 export const setupData = (values:Array<string>): seedLocationMap => {
@@ -27,20 +28,33 @@ export const setupData = (values:Array<string>): seedLocationMap => {
     for(let [i, value] of values.entries()){
         if(value.indexOf("seeds:") >= 0){
             let seedsArr = value.split(":")[1].trim().split(" ");
-            console.log(seedsArr);
+            //console.log(seedsArr);
             seedsArr.map((e) => {
                 data.seeds.push(Number(e));
             });
+        }else{ 
+            let inMap = null;
+            if(value === ""){
+                inMap = false
+            }   
+            let innerMap = [];
+            if(value.indexOf("map:") >= 0){
+                inMap = true;
+                let j = i + 1;
+                //console.log(j);
+                //console.log(values[j]);
+                while(values[j]){
+                    //console.log("While: " + values[j]);
+                    //let numberArr = values[j].split(" ");
+                    innerMap.push(values[j]);
+                    j++;
+                }
+                data.maps.push(innerMap);
+                
+            }
         }
-        let innerMap = [];
-        let inMap = false;
-        if(value.indexOf("map:") >= 0){
-            inMap = true;
-        }
-
-            innerMap.push(values[i+1]);
     }
 
-    console.log(data);
+    //console.log(data);
     return data;
 };
