@@ -2,6 +2,11 @@
 
 How many days can I get through this year?
 
+## Goal
+
+Use `vim` and `ts` and write tests using `jest`.
+Try and complete each day but don't stress too much. 
+
 ## Usage
 
 I'm running this using `ts-node` like so:
@@ -18,10 +23,7 @@ npm run test test/day6.test.js
 
 This runs `tsc` and then the jest test in the transpiled js file.
 
-## Goal
-
-Use `vim` and `ts` and write tests using `jest`.
-Try and complete each day but don't stress too much. 
+## Days
 
 ### Day 1 - Trebuchet
 
@@ -45,4 +47,6 @@ Got the first star. Figured out iterators in TS. Gave up cause for the second pa
 
 ### Day 6 - Wait For It
 
-I'm hopeful that I can catch up today.
+I'm hopeful that I can catch up today. I'm pretty proud of how this one went. Very TDD. 
+
+### Day 7 - Camel Cards
