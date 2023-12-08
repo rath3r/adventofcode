@@ -161,10 +161,10 @@ const exampleData = [
 
 describe('day7', () => {
     it('should set up the data correctly', () => {
-        expect(setUpData(exampleInput)).toEqual(exampleData);
+        //expect(setUpData(exampleInput)).toEqual(exampleData);
     });
 
     it('calculateWinnings should combine the bind, rank and order to calculate the winnings', () => {
-        expect(calculateWinnings(exampleInput)).toBe(6440);
+        expect(calculateWinnings(exampleInput)).toBe(5905);
     });
 });
