@@ -5,7 +5,7 @@ How many days can I get through this year?
 ## Goal
 
 Use `vim` and `ts` and write tests using `jest`.
-Try and complete each day but don't stress too much. 
+Try and complete each day but don't stress too much.
 
 ## Usage
 
@@ -47,6 +47,8 @@ Got the first star. Figured out iterators in TS. Gave up cause for the second pa
 
 ### Day 6 - Wait For It
 
-I'm hopeful that I can catch up today. I'm pretty proud of how this one went. Very TDD. 
+I'm hopeful that I can catch up today. I'm pretty proud of how this one went. Very TDD.
 
 ### Day 7 - Camel Cards
+
+Really close to getting it on the same day. figured out the sort function and cementing interfaces.
