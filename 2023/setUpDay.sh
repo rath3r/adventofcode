@@ -15,8 +15,9 @@ fi
 
 mkdir src/day$1;
 touch src/day$1/day$1.ts
-touch src/day$1/index.ts
+cp src/day6/index.ts src/day$1/index.ts
 touch test/day$1.test.ts
+touch src/day$1/input.txt
 
 echo "Day$1 is set up";
 exit 0;

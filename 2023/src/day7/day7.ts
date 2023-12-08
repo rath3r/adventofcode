@@ -1,3 +1,7 @@
+import {
+    sumArrayValues
+} from '../helpers/helper'
+
 interface hand {
     originalValue: string,
     hand: string,
@@ -89,29 +93,85 @@ export const identifyHands = (cards:Array<card>): number => {
     return handType;
 };
 
-const compare = (a:hand, b:hand) => {
-    //identifyHands(a);
-    return 0;
+export const identifyHandsWithJoker = (cards:Array<card>): number => {
+    //console.log(cards);
+    cards.sort((a,b) => {
+        if(a.cardOccurence < b.cardOccurence) return 1;
+        if(a.cardOccurence > b.cardOccurence) return -1;
+        return 0;
+    });
+    //console.log(cards);
+    let handType = 0;
+    //for(let [i, card] of cards.entries()){
+    // five of a kind
+    if(cards[0].cardOccurence === 5){
+        handType = 6;
+    }
+    // four of a kind
+    if(cards[0].cardOccurence === 4){
+        if(cards[4].cardValue === "J"){
+            handType = 6;
+        }
+        handType = 5;
+    }
+    // full house
+    if(cards[0].cardOccurence === 3 && cards[3].cardOccurence === 2){
+        if(cards[3].cardValue === "J" && cards[3].cardValue === "J"){
+            handType = 6;
+        }
+        handType = 4;
+    }
+    // three of a kind
+    if(cards[0].cardOccurence === 3 && cards[3].cardOccurence === 1){
+        if(cards[3].cardValue === "J" || cards[4].cardValue === "J"){
+            handType = 5;
+        }
+        handType = 3;
+    }
+    // two pair
+    if(cards[0].cardOccurence === 2 && cards[2].cardOccurence === 2){
+        handType = 2;
+    }
+    // one pair
+    if(cards[0].cardOccurence === 2 && cards[2].cardOccurence === 1){
+        handType = 1;
+    }
+    return handType;
+};
+
+const getCardRank = (cardValue:string) => {
+    const cardRank: {[key: string]: number} = {"A": 13, "K": 12, "Q": 11, "J": 10, "T": 9, "9": 8, "8": 7, "7": 6, "6": 5, "5": 4, "4": 3, "3": 2, "2": 1};
+    return cardRank[cardValue];
 };
 
 export const rankHands = (values:Array<string>):Array<hand> => {
     const data = setUpData(values);
-    console.log("Before: " + data[0].hand);
     data.sort((a:hand, b:hand) => {
-        if(a.handType < b.handType) return 1;
-        if(a.handType > b.handType) return -1;
+        if(a.handType > b.handType) return 1;
+        if(a.handType < b.handType) return -1;
         if(a.handType === b.handType) {
-            console.log(a.hand + " and " + b.hand + " have the same type.");
+            const handAArr = a.hand.split("");
+            const handBArr = b.hand.split("");
+            for(let [i] of handAArr.entries()){
+                if(getCardRank(handAArr[i]) > getCardRank(handBArr[i])){
+                    return 1;
+                }else if(getCardRank(handAArr[i]) < getCardRank(handBArr[i])){
+                    return -1
+                }
+            }
         }
         return 0;
     });
-    console.log("After: " + data[0].hand)
-    //for(card in data){
-    //    hand identifyHands(card)
-    //    card.hand = hand
-    //}
-    //randHandTypes(data)
-    //rankHands(data)
 
-    return []
+    return data;
 }
+
+export const calculateWinnings = (values:Array<string>) => {
+    const data = rankHands(values);
+    const winnings = [];
+    for(let [i] of data.entries()){
+        const rank = i + 1;
+        winnings.push(data[i].bid * rank);
+    }
+    return sumArrayValues(winnings);
+};
