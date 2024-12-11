@@ -1,57 +1,54 @@
 
-file = open("example.txt", "r")
+class day4:
+    def __init__(self):
+        
+        self.input = []
+        with open("input.txt", "r") as f:
+            for line in f.readlines():
+                lineArr = []
+                for letter in line:
+                    if not letter == "\n":
+                        lineArr.append(letter)
+                self.input.append(lineArr)
+        self.noOfRows = len(self.input)
+        self.noOfCols = len(self.input[0])
+        self.word_goal = ['XMAS', 'SAMX']
+        self.part1 = 0
 
-searchWord = "XMAS"
-outputArr = []
-inputArr = []
+        
+    def xmasSearch(self):
+        #print(self.input)
+        self._row_search()
+        self._col_search()
+        self._diag_search()
 
-def setUpSearchInput():
-    print("search Input")
-    for i, line in enumerate(file.readlines()):
-        #lineArr = list(line)
-        #inputArr.append(lineArr)
-        #print(line.split())
-        #print(len(lineArr))
-        lineArr = []
-        outputLine = []
-        for letter in line:
-            if not letter == "\n":
-                lineArr.append(letter)
-                outputLine.append(".")
-        inputArr.append(lineArr)
-        outputArr.append(outputLine)
+    def _row_search(self):
+        #print("row search")
+        for row in self.input:
+            for i in range(self.noOfCols - 3):
+                self.part1 += ''.join(row[i:i+4]) in self.word_goal
+    
+    def _col_search(self):
+        """Search for the word 'XMAS' in the columns of the word search."""
+        for col in zip(*self.input):
+            for i in range(self.noOfCols - 3):
+                self.part1 += ''.join(col[i:i+4]) in self.word_goal
 
-def lookAround(startI, startJ, search):
-    print("look for " + search)
-    if not startI - 1 < 0:
-        print(startI)
-        addToOutput(startI -1, startJ -1, inputArr[startI -1][startJ -1])
-    print(startJ)
-    return ""
+    def _diag_search(self):
+        """Search for the word 'XMAS' in the diagonals of the word search."""
+        for row in range(self.noOfRows - 3):
+            for col in range(self.noOfCols - 3):
+                diag_1 = ''.join([self.input[row][col],
+                                  self.input[row+1][col+1],
+                                  self.input[row+2][col+2],
+                                  self.input[row+3][col+3]])
+                diag_2 = ''.join([self.input[row+3][col],
+                                  self.input[row+2][col+1],
+                                  self.input[row+1][col+2],
+                                  self.input[row][col+3]])
+                self.part1 += diag_1 in self.word_goal
+                self.part1 += diag_2 in self.word_goal
 
-def displayArr(arr):
-    print("display Arr")
-    print(len(arr))
-    output = ""
-    for line in arr:
-        lineStr = ""
-        for letter in line:
-            lineStr += letter
-        print(lineStr)
-
-def addToOutput(i, j, letter):
-    outputArr[i][j] = letter
-
-def search():
-    for i, line in enumerate(inputArr):
-        for j, letter in enumerate(line):
-            if(letter == "X"):
-                addToOutput(i, j, letter)
-                lookAround(i, j, "M")
-                #for searchLetter in searchWord:
-                #    lookAround(i, j, searchLetter)
-
-setUpSearchInput()
-search()
-
-displayArr(outputArr)
+day4 = day4()
+day4.xmasSearch()
+print(day4.part1)
